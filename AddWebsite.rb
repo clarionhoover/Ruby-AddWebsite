@@ -2,7 +2,7 @@
 ###################################################
 #  Author: Randy Hoover <randy.hoover@gmail.com>  #
 #  Date Created:  2013-10-14                      #
-#  Last Modified: 2013-10-14                      #
+#  Last Modified: 2013-10-17                      #
 ###################################################
 
 # HighLine for making prompting easier
@@ -24,8 +24,13 @@ def site_exists(username,hostname,tld)
 	tld.strip
 	tld.downcase
 	# check to see if user already has a folder and error if folder exists
-	if (File.directory? "/home/#{username}/webroot/#{hostname}.#{tld}" == true}
+	if (File.directory? "/home/#{username}/webroot/#{hostname}.#{tld}" == true)
 	    puts "Folder exists for user #{username} and website #{hostname}.#{tld} please delete or pick a new hostname"
+	    exit
+	end
+	# then check to see if there's already an apache configuration for the site
+	if (File.file? "/etc/apache2/sites-available/#{hostname}.#{tld}.conf" == true)
+	    puts "Configuration file exists for website #{hostname}.#{tld} please delete or pick new hostname"
 	    exit
 	end
 end
