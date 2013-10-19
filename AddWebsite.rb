@@ -50,3 +50,9 @@ end
 
 hostname = ask "Hostname without tld (ie clarionhoover test.clarionhoover): "
 tld = ask "TLD for hostname (ie com co org without the .): "
+
+# not sure what to do here for this
+if (site_exists(username,hostname,tld) == false)
+    # it works so do i just do nothing?
+end
+
