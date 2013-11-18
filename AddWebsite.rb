@@ -24,7 +24,7 @@ def user_exists(username)
 end
 
 # method for checking to see if the site exists either in the form of a directory
-# in in the form of an apache virtualhost
+# or in the form of an apache virtualhost
 def site_exists(username,hostname,tld)
 	# strip out all the junk and make sure everything is lowercase
 	hostname = sanitize_text(hostname)
@@ -45,7 +45,7 @@ username = ask "Username of the account the website will go under: "
 
 # kill the script if user doesn't exist
 if (user_exists(username) == false)
-    abort("EROR: User doesn't exist, please create user")
+    abort("ERROR: User doesn't exist, please create user")
 end
 
 hostname = ask "Hostname without tld (ie clarionhoover test.clarionhoover): "
